@@ -111,7 +111,7 @@ sub run_perl_job
     my $token=$ctx->token;
     my $provenance=$ctx->provenance;
 
-    my $repcli = installed_clients::KBaseReportClient->new($self->{callbackURL});
+    my $repcli = installed_clients::KBaseReportClient->new($self->{callbackURL},token=>$token);
     my $report = $repcli->create({
         workspace_name => $params->{workspace_name},
         report => {

@@ -111,6 +111,9 @@ sub new
 	    if (!$token->error_message) {
 	        $self->{token} = $token->token;
 	    }
+	    else{
+
+	    }
 	}
 	
 	if (exists $self->{token})
