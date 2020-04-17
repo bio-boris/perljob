@@ -311,6 +311,8 @@ sub _create_submit {
                            data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
             );
         } else {
+        
+            print Dumper($result);
             return $result->result->[0];  # job_id
         }
     } else {
