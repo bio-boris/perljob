@@ -15,6 +15,7 @@ eval {
 
 use Bio::KBase::AuthToken;
 
+
 # Client version should match Impl version
 # This is a Semantic Version number,
 # http://semver.org
@@ -35,12 +36,12 @@ Module for workspace data object reports, which show the results of running a jo
 sub new
 {
     my($class, $url, @args) = @_;
-    
+
 
     my $self = {
-	client => installed_clients::KBaseReportClient::RpcClient->new,
-	url => $url,
-	headers => [],
+        client => installed_clients::KBaseReportClient::RpcClient->new,
+        url => $url,
+        headers => [],
     };
     my %arg_hash = @args;
     $self->{async_job_check_time} = 0.1;
@@ -102,8 +103,10 @@ sub new
     {
 	my %arg_hash2 = @args;
 	if (exists $arg_hash2{"token"}) {
+        print "DEBUG: Line 106 " . Dumper($arg_hash2{"token"});
 	    $self->{token} = $arg_hash2{"token"};
 	} elsif (exists $arg_hash2{"user_id"}) {
+        print "DEBUG: Line 109 " . Dumper($arg_hash2{"token"});
 	    my $token = Bio::KBase::AuthToken->new(@args);
 	    if (!$token->error_message) {
 	        $self->{token} = $token->token;
@@ -273,12 +276,32 @@ sub _create_submit {
     my $context = undef;
     if ($self->{service_version}) {
         $context = {'service_ver' => $self->{service_version}};
+
     }
+    print "DEBUG: CONTEXT IS \n";
+    print "@{[%{$context}]} \n";
+    print "DEBUG: HEADERS: @{$self->{headers}}" . "\n"  ;
+    print "DEBUG: URL:  " . $self->{url} . "\n";
+    print "DEBUG: PARAMS: @{[%{$args[0]}]}"  . "\n";
+
     my $result = $self->{client}->call($self->{url}, $self->{headers}, {
         method => "KBaseReport._create_submit",
         params => \@args, context => $context});
+
+    print "Dumping Start\n";
+    print Dumper($args[0]);
+    print "Dumping End \n";
+
+    print "Dumping Start\n";
+    print Dumper($self->{client});
+    print "Dumping End\n";
+
+
+
+    print Dumper($result);
     if ($result) {
         if ($result->is_error) {
+
             Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
                            code => $result->content->{error}->{code},
                            method_name => '_create_submit',
