@@ -118,7 +118,7 @@ sub new
     print(Dumper($self));
     print("\nSELF WAS ABOVE\n")
     print(Dumper($self->{client}));
- print("\nSELF CLIENTs WAS ABOVE\n")
+ print("\nSELF CLIENTs WAS ABOVE\n");
 
 
     {
