@@ -46,7 +46,7 @@ sub new
     print(" 4\n");
     print(Dumper(@args));
    print(" 5\n");
-    print(Dumper($self->{client}));
+
 
 
     my $self = {
@@ -54,6 +54,8 @@ sub new
         url => $url,
         headers => [],
     };
+
+
     my %arg_hash = @args;
     $self->{async_job_check_time} = 0.1;
     if (exists $arg_hash{"async_job_check_time_ms"}) {
@@ -110,6 +112,14 @@ sub new
     # This module requires authentication.
     #
     # We create an auth token, passing through the arguments that we were (hopefully) given.
+    print("TOKEN IS?");
+    print(@args);
+    print("\n\n");
+    print(Dumper($self));
+    print("\nSELF WAS ABOVE\n")
+    print(Dumper($self->{client}));
+ print("\nSELF CLIENTs WAS ABOVE\n")
+
 
     {
 	my %arg_hash2 = @args;
