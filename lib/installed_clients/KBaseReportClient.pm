@@ -41,7 +41,7 @@ sub new
     my($class, $url, @args) = @_;
     print($class);
     print($url);
-    print($args);
+    print(@args);
 
 
 
