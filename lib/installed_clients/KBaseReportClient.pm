@@ -36,12 +36,16 @@ Module for workspace data object reports, which show the results of running a jo
 sub new
 {
 
-    print("I am intializing the kbase report client");
+    print(" 1 I am intializing the kbase report client\n");
     print(@_);
     my($class, $url, @args) = @_;
+    print(" 2\n");
     print($class);
+        print(" 3\n");
     print($url);
+        print(" 4\n");
     print(Dumper(@args));
+           print(" 5\n");
 
 
 
