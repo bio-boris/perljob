@@ -132,7 +132,7 @@ sub new
     print(@args);
     print("\n\n");
     print(Dumper($self));
-    print("\nSELF WAS ABOVE\n")
+    print("\nSELF WAS ABOVE\n");
     print(Dumper($self));
 
 	if (exists $self->{token})
