@@ -41,12 +41,12 @@ sub new
     my($class, $url, @args) = @_;
     print(" 2\n");
     print($class);
-        print(" 3\n");
+    print(" 3\n");
     print($url);
-        print(" 4\n");
+    print(" 4\n");
     print(Dumper(@args));
-           print(" 5\n");
-
+   print(" 5\n");
+    print(Dumper($self->{client}));
 
 
     my $self = {
